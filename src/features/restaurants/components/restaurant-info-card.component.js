@@ -32,6 +32,8 @@ const Address = styled.Text`
 
 const RatingRow = styled.View `
     flex-direction: row;
+    padding-top: ${(props) => props.theme.space[2]};
+    padding-bottom: ${(props) => props.theme.space[2]};
 `
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
