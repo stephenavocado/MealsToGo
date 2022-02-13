@@ -33,8 +33,8 @@ const Address = styled.Text`
 
 const RatingRow = styled.View `
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
-    align-items: baseline;
     padding-top: ${(props) => props.theme.space[2]};
     padding-bottom: ${(props) => props.theme.space[1]};
 `
@@ -45,17 +45,18 @@ const Rating = styled.View `
 
 const RatingRowEnd = styled.View `
     flex-direction: row;
+    justify-content: space-evenly;
 `
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
     const { 
         name = 'Some restaurant', 
-        icon, 
+        icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png", 
         photos = ["https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg", ], 
         address = '100 Park Place', 
         isOpenNow = true, 
         rating = 4, 
-        isClosedTemporarily
+        isClosedTemporarily = true,
     } = restaurant;
 
     const ratingArray = Array.from(new Array(Math.floor(rating)));
@@ -72,7 +73,9 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
                         ))}
                     </Rating>
                     <RatingRowEnd>
+                        {isClosedTemporarily && <Text style={{ color: "red" }} variant="label">CLOSED TEMPORARILY</Text>}
                         {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
+                        <Image source={{ uri: icon }} style={{ width: 15, height: 15 }} />
                     </RatingRowEnd>
                 </RatingRow>
                 <Address>{address}</Address>
