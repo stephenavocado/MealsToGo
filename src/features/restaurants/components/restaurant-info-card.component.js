@@ -30,6 +30,10 @@ const Address = styled.Text`
     font-size: ${(props) => props.theme.fontSizes.caption};
 `
 
+const RatingRow = styled.View `
+    flex-direction: row;
+`
+
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
     const { 
         name = 'Some restaurant', 
@@ -41,12 +45,18 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
         isClosedTemporarily
     } = restaurant;
 
+    const ratingArray = Array.from(new Array(Math.floor(rating)));
+
     return (
         <RestaurantCard elevation={5}>
             <RestaurantCardCover key={name} source={{ uri: photos[0] }}/>
             <Info>
                 <Title>{name}</Title>
-                <SvgXml xml={star} width={20} height={20} />
+                <RatingRow>
+                    {ratingArray.map(() => (
+                        <SvgXml xml={star} width={20} height={20} />
+                    ))}
+                </RatingRow>
                 <Address>{address}</Address>
             </Info>
         </RestaurantCard> 
