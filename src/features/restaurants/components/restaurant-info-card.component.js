@@ -3,6 +3,7 @@ import styled from "styled-components/native";
 import { Text, Image, StyleSheet } from "react-native";
 import { Card } from "react-native-paper";
 import { SvgXml } from "react-native-svg";
+import { Spacer } from "../components/spacer/spacer.component"
 
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
@@ -74,7 +75,9 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
                     </Rating>
                     <RatingRowEnd>
                         {isClosedTemporarily && <Text style={{ color: "red" }} variant="label">CLOSED TEMPORARILY</Text>}
+                        <Spacer variant="left.large" />
                         {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
+                        <Spacer variant="left.large" />
                         <Image source={{ uri: icon }} style={{ width: 15, height: 15 }} />
                     </RatingRowEnd>
                 </RatingRow>
