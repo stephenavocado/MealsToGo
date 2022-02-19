@@ -1,5 +1,4 @@
 import React from "react";
-import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
 import { 
   StatusBar,  
   SafeAreaView, 
@@ -18,13 +17,21 @@ const SearchContainer = styled.View`
     padding: ${(props) => props.theme.space[3]}; 
 `
 
+const RestaurantList = styled(FlatList).attrs({
+    contentContainerStyle: {
+        padding: 16
+    }
+})`
+    
+`
+
 export const RestaurantsScreen = () => {
     return(
         <Container>
             <SearchContainer>
                 <Searchbar />
             </SearchContainer>
-            <FlatList 
+            <RestaurantList 
                 data={[
                     {name: 1}, 
                     {name: 2},
