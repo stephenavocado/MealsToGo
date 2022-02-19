@@ -3,46 +3,21 @@ import styled from "styled-components/native";
 import { Image, StyleSheet } from "react-native";
 import { Card } from "react-native-paper";
 import { SvgXml } from "react-native-svg";
+import { 
+    RestaurantCard, 
+    RestaurantCardCover, 
+    Info, 
+    Address, 
+    RatingRow, 
+    Rating, 
+    RatingRowEnd,
+    Icon
+} from "./restaurant-info-card.styles"
 
 import { Spacer } from "../../../components/spacer/spacer.component"
 import { Text } from "../../../components/typograhpy/text.component"
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
-
-const RestaurantCard = styled(Card)`
-    backgroundColor: ${(props) => props.theme.colors.bg.primary};
-`;
-
-const RestaurantCardCover = styled(Card.Cover)`
-    padding: ${(props) => props.theme.space[3]};
-    backgroundColor: ${(props) => props.theme.colors.bg.primary};
-`;
-
-const Info = styled.View `
-    padding: ${(props) => props.theme.space[3]};
-`
-
-const Address = styled.Text`
-    font-family: ${(props) => props.theme.fonts.body};
-    font-size: ${(props) => props.theme.fontSizes.caption};
-`
-
-const RatingRow = styled.View `
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: ${(props) => props.theme.space[2]};
-    padding-bottom: ${(props) => props.theme.space[1]};
-`
-
-const Rating = styled.View `
-    flex-direction: row;
-`
-
-const RatingRowEnd = styled.View `
-    flex-direction: row;
-    justify-content: space-evenly;
-`
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
     const { 
@@ -74,7 +49,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
                             {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
                         </Spacer>
                         <Spacer position="left" size="large">
-                            <Image source={{ uri: icon }} style={{ width: 15, height: 15 }} />
+                            <Icon source={{ uri: icon }} />
                         </Spacer>
                     </RatingRowEnd>
                 </RatingRow>
