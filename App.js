@@ -72,9 +72,9 @@ export default function App() {
                 inactiveTintColor: "gray",
               }}
             >
-              <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
-              <Tab.Screen name="Map" component={Map} />
-              <Tab.Screen name="Settings" component={Settings} />
+              <Tab.Screen name="Restaurants" component={RestaurantsScreen} options={{ headerShown: false }} />
+              <Tab.Screen name="Map" component={Map} options={{ headerShown: false }} />
+              <Tab.Screen name="Settings" component={Settings} options={{ headerShown: false }} />
             </Tab.Navigator>
           </NavigationContainer>
         </RestaurantsContextProvider>
