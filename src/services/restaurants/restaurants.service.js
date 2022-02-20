@@ -10,10 +10,19 @@ export const restaurantsRequest = (location = "37.7749295,-122.4194155") => {
         resolve(mock);
     });
 };
-restaurantsRequest().then((result) => {
-    console.log(result);
-}).catch((err) => {
-    console.log(err)
+
+const restaurantsTransform = (result) => {
+    const newResult = camelize(result); 
+    return newResult
+}
+
+restaurantsRequest()
+    .then(restaurantsTransform)
+    .then((transformedResponse) => {
+        console.log(transformedResponse);
+    })
+    .catch((err) => {
+    console.log(err);
 });
 // request will return in the future, so use .then
 // simple api mimic
