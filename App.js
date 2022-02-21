@@ -8,6 +8,7 @@ import { SafeArea } from "./src/components/utility/safe-area.component";
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
 
+import { Navigation } from "./src/infrastructure/navigation";
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
@@ -65,21 +66,11 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         <LocationContextProvider>
-        <RestaurantsContextProvider>
-          <NavigationContainer>
-          <Tab.Navigator
-              screenOptions={createScreenOptions}
-              tabBarOptions={{
-                activeTintColor: "tomato",
-                inactiveTintColor: "gray",
-              }}
-            >
-              <Tab.Screen name="Restaurants" component={RestaurantsScreen} options={{ headerShown: false }} />
-              <Tab.Screen name="Map" component={Map} options={{ headerShown: false }} />
-              <Tab.Screen name="Settings" component={Settings} options={{ headerShown: false }} />
-            </Tab.Navigator>
-          </NavigationContainer>
-        </RestaurantsContextProvider>
+          <RestaurantsContextProvider>
+            <NavigationContainer>
+              <Navigation />
+            </NavigationContainer>
+          </RestaurantsContextProvider>
         </LocationContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style='auto' />
