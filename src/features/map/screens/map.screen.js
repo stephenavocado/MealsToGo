@@ -38,8 +38,16 @@ return (
                     longitudeDelta: 0.02,
                 }}
             >
-                {restaurants.map(() => {
-                    return null;
+                {restaurants.map((restaurant) => {
+                    return <MapView.Marker
+                        key={restaurant.name}
+                        title={restaurant.name}
+                        coordinate={{
+                            latitude: restaurant.geometry.location.lat,
+                            longitude: restaurant.geometry.location.lng,
+                        }}
+                    >
+                    </MapView.Marker> ;
                 })}
             </Map>
         </>
