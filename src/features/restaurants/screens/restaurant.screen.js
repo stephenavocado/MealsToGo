@@ -5,6 +5,8 @@ import { ActivityIndicator, Colors } from "react-native-paper";
 import styled from "styled-components/native";
 import { SafeArea } from "../../../components/utility/safe-area.component"
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
+import { FavouritesContext } from "../../../services/favourites/favourites.context";
+
 import { Search } from "../components/search.component"
 import { Spacer } from "../../../components/spacer/spacer.component";
 
@@ -26,6 +28,8 @@ const LoadingContainer = styled.View`
 
 export const RestaurantsScreen = ({ navigation }) => {
     const { isLoading, error, restaurants } = useContext(RestaurantsContext);
+    const { favourites } = useContext(FavouritesContext);
+
     return(
         <SafeArea>
             { isLoading && (
